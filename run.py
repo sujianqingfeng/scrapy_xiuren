@@ -12,7 +12,8 @@ from scrapy.cmdline import execute
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-execute(['scrapy', 'crawl', 'xiuren_spider'])
+# execute(['scrapy', 'crawl', 'xiuren_spider'])
+execute(['scrapy', 'crawl', 'meizi_spider'])
 
 # def func():
 #     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -21,3 +22,6 @@ execute(['scrapy', 'crawl', 'xiuren_spider'])
 #
 # if __name__ == '__main__':
 #     func()
+
+# import re
+# print(re.findall(r'(\d+)', 'http://www.mzitu.com/57176')[0])

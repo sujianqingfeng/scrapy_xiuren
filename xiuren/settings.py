@@ -29,6 +29,8 @@ DEFAULT_REQUEST_HEADERS = {
     'Accept-Language': 'en_US,en;q=0.8',
     'Connection': 'keep-alive',
     'Content-Type': 'application/x-www-form-urlencoded',
+    'Host':'www.mzitu.com',
+    'Referer':'http://www.mzitu.com/mm/'
 }
 
 DOWNLOADER_MIDDLEWARES = {
@@ -37,7 +39,7 @@ DOWNLOADER_MIDDLEWARES = {
 }
 
 
-IMAGES_STORE = 'F:\\xiuren'
+IMAGES_STORE = 'F:\\meizi'
 ITEM_PIPELINES = {
    'xiuren.pipelines.ImgSavePinpeline': 300,
 }

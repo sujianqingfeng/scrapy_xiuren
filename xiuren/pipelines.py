@@ -7,13 +7,22 @@
 
 import os
 import scrapy
-from scrapy.contrib.pipeline.images import ImagesPipeline
+from scrapy.pipelines.images import ImagesPipeline
 from scrapy.exceptions import DropItem
 
 
 class ImgSavePinpeline(ImagesPipeline):
+
+    headers = {
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Encoding:': 'gzip, deflate',
+        'Accept-Language': 'en_US,en;q=0.8',
+        'Connection': 'keep-alive',
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Host':'i.meizitu.net'
+    }
     def get_media_requests(self, item, info):
-        yield scrapy.Request(item['image_url'], meta={'item': item})
+        yield scrapy.Request(item['image_url'], meta={'item': item},headers=self.headers)
 
     def item_completed(self, results, item, info):
         image_paths = [x['path'] for ok, x in results if ok]
@@ -28,7 +37,7 @@ class ImgSavePinpeline(ImagesPipeline):
     def file_path(self, request, response=None, info=None):
         item = request.meta['item']
         base_name = os.path.basename(item['image_url'])
-        index = item['image_dir'].find('(')
+        index = item['image_dir'].find('（')
         if not index == -1:
             item['image_dir'] = item['image_dir'][:index]
         filename = u'{}/{}'.format(item['image_dir'], base_name)
