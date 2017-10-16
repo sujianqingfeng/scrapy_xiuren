@@ -6,21 +6,16 @@ BOT_NAME = 'xiuren'
 SPIDER_MODULES = ['xiuren.spiders']
 NEWSPIDER_MODULE = 'xiuren.spiders'
 
-
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
-
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+# CONCURRENT_REQUESTS = 32
 
 DOWNLOAD_DELAY = 0
 
-
 # Disable cookies (enabled by default)
 COOKIES_ENABLED = False
-
-
 
 # 请求头
 DEFAULT_REQUEST_HEADERS = {
@@ -28,20 +23,15 @@ DEFAULT_REQUEST_HEADERS = {
     'Accept-Encoding:': 'gzip, deflate',
     'Accept-Language': 'en_US,en;q=0.8',
     'Connection': 'keep-alive',
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'Host':'www.mzitu.com',
-    'Referer':'http://www.mzitu.com/mm/'
+    'Content-Type': 'application/x-www-form-urlencoded'
 }
 
 DOWNLOADER_MIDDLEWARES = {
-   'xiuren.middleware.proxy_middleware.ProxyMiddleware': 100,
-   'xiuren.middleware.randomuseragent_middleware.RandomUserAgentMiddeleware': 101,
+    'xiuren.middleware.proxy_middleware.ProxyMiddleware': 100,
+    'xiuren.middleware.randomuseragent_middleware.RandomUserAgentMiddeleware': 101,
 }
-
 
 IMAGES_STORE = 'F:\\meizi'
 ITEM_PIPELINES = {
-   'xiuren.pipelines.ImgSavePinpeline': 300,
+    'xiuren.pipelines.ImgSavePinpeline': 300,
 }
-
-

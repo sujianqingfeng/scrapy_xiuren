@@ -12,17 +12,20 @@ from scrapy.exceptions import DropItem
 
 
 class ImgSavePinpeline(ImagesPipeline):
-
     headers = {
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Encoding:': 'gzip, deflate',
         'Accept-Language': 'en_US,en;q=0.8',
         'Connection': 'keep-alive',
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Host':'i.meizitu.net'
+        'Host': 'i.meizitu.net'
     }
+
     def get_media_requests(self, item, info):
-        yield scrapy.Request(item['image_url'], meta={'item': item},headers=self.headers)
+        if info.spider.name == 'meizi_spider':
+            yield scrapy.Request(item['image_url'], meta={'item': item}, headers=self.headers)
+        else:
+            yield scrapy.Request(item['image_url'], meta={'item': item})
 
     def item_completed(self, results, item, info):
         image_paths = [x['path'] for ok, x in results if ok]

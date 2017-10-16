@@ -3,7 +3,7 @@ from xiuren.items import XiurenItem
 from scrapy import Request
 
 '''
-http://www.mzitu.com/xinggan/
+http://www.mzitu.com/japan/
 
 '''
 
@@ -13,7 +13,22 @@ import re
 class MeiziSpiders(scrapy.Spider):
     name = "meizi_spider"
 
-    start_urls = ["http://www.mzitu.com/mm/"]
+    start_urls = ["http://www.mzitu.com/xinggan/", "http://www.mzitu.com/japan/", "http://www.mzitu.com/mm/",
+                  "http://www.mzitu.com/taiwan/"]
+
+    custom_settings = {
+
+        'DEFAULT_REQUEST_HEADERS': {
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept-Encoding:': 'gzip, deflate',
+            'Accept-Language': 'en_US,en;q=0.8',
+            'Connection': 'keep-alive',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Host': 'www.mzitu.com',
+            'Referer': 'http://www.mzitu.com'
+        }
+
+    }
 
     def parse(self, response):
         all_urls = response.xpath('//div[@class="postlist"]/ul/li/a/@href').extract()

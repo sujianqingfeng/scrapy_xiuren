@@ -33,9 +33,6 @@ class XiuRenSpiders(scrapy.Spider):
             yield Request(response.urljoin(next_page), callback=self.parse)
             self.logger.info('当前页抓取完毕--开始下一页--{}'.format(next_page))
 
-
-
-
     def parser_down(self, response):
 
         item = XiurenItem()
@@ -46,10 +43,9 @@ class XiuRenSpiders(scrapy.Spider):
 
         item['image_dir'] = img_dir
         item['image_url'] = img_link
-        self.logger.info('图片页面开始下载--{}--{}'.format(img_dir,img_link))
+        self.logger.info('图片页面开始下载--{}--{}'.format(img_dir, img_link))
 
         if next_page:
             yield Request(response.urljoin(next_page), callback=self.parser_down)
-
 
         yield item
