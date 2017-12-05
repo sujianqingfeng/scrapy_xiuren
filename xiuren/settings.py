@@ -10,7 +10,7 @@ NEWSPIDER_MODULE = 'xiuren.spiders'
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-# CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 16
 
 DOWNLOAD_DELAY = 0
 

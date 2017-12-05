@@ -41,6 +41,8 @@ class ImgSavePinpeline(ImagesPipeline):
         item = request.meta['item']
         base_name = os.path.basename(item['image_url'])
         index = item['image_dir'].find('（')
+        if index == -1:
+            index = item['image_dir'].find('(')
         if not index == -1:
             item['image_dir'] = item['image_dir'][:index]
         filename = u'{}/{}'.format(item['image_dir'], base_name)

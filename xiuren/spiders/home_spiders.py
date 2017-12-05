@@ -3,7 +3,7 @@ from xiuren.items import XiurenItem
 from scrapy import Request
 
 '''
-http://www.55156.com/
+http:+-
 网站主页的爬虫
 '''
 

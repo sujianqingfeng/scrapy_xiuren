@@ -2,7 +2,7 @@
 
 import datetime
 import os
-import random, requests, json
+# import random, requests, json
 
 
 class ProxyMiddleware(object):
