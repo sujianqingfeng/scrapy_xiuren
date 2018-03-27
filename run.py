@@ -16,7 +16,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 # execute(['scrapy', 'crawl', 'meizi_spider'])
 
 
-execute('scrapy crawl gallery_spider'.split(' '))
+execute('scrapy crawl jcenter_spider'.split(' '))
 
 # def func():
 #     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
